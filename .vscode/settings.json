@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": false,
+  // Use spaces instead of tabs
+  "editor.insertSpaces": true,
+
+  // Set number of spaces per indentation level
+  "editor.tabSize": 2
+}
