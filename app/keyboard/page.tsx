@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 
 type KeyDef = {
@@ -40,16 +42,16 @@ const row1: KeyDef[] = [
 
 const row2: KeyDef[] = [
   { label: "tab", action: "tab", width: "md" },
-  { label: "q", code: "KeyQ" },
-  { label: "w", code: "KeyW" },
-  { label: "e", code: "KeyE" },
-  { label: "r", code: "KeyR" },
-  { label: "t", code: "KeyT" },
-  { label: "y", code: "KeyY" },
-  { label: "u", code: "KeyU" },
-  { label: "i", code: "KeyI" },
-  { label: "o", code: "KeyO" },
-  { label: "p", code: "KeyP" },
+  { label: "Q", code: "KeyQ" },
+  { label: "W", code: "KeyW" },
+  { label: "E", code: "KeyE" },
+  { label: "R", code: "KeyR" },
+  { label: "T", code: "KeyT" },
+  { label: "Y", code: "KeyY" },
+  { label: "U", code: "KeyU" },
+  { label: "I", code: "KeyI" },
+  { label: "O", code: "KeyO" },
+  { label: "P", code: "KeyP" },
   { label: "[", shifted: "{", code: "BracketLeft" },
   { label: "]", shifted: "}", code: "BracketRight" },
   { label: "\\", shifted: "|", code: "Backslash" },
@@ -58,15 +60,15 @@ const row2: KeyDef[] = [
 // Home row (Caps, A-L, ;, ', Enter)
 const row3: KeyDef[] = [
   { label: "caps", action: "caps", width: "lg" },
-  { label: "a", code: "KeyA" },
-  { label: "s", code: "KeyS" },
-  { label: "d", code: "KeyD" },
-  { label: "f", code: "KeyF" },
-  { label: "g", code: "KeyG" },
-  { label: "h", code: "KeyH" },
-  { label: "j", code: "KeyJ" },
-  { label: "k", code: "KeyK" },
-  { label: "l", code: "KeyL" },
+  { label: "A", code: "KeyA" },
+  { label: "S", code: "KeyS" },
+  { label: "D", code: "KeyD" },
+  { label: "F", code: "KeyF" },
+  { label: "G", code: "KeyG" },
+  { label: "H", code: "KeyH" },
+  { label: "J", code: "KeyJ" },
+  { label: "K", code: "KeyK" },
+  { label: "L", code: "KeyL" },
   { label: ";", shifted: ":", code: "Semicolon" },
   { label: "'", shifted: '"', code: "Quote" },
   { label: "enter", action: "enter", width: "xl" },
@@ -75,13 +77,13 @@ const row3: KeyDef[] = [
 // Bottom letter row (Shift, Z-M, , . /, Shift)
 const row4: KeyDef[] = [
   { label: "shift", action: "shift", width: "xl" },
-  { label: "z", code: "KeyZ" },
-  { label: "x", code: "KeyX" },
-  { label: "c", code: "KeyC" },
-  { label: "v", code: "KeyV" },
-  { label: "b", code: "KeyB" },
-  { label: "n", code: "KeyN" },
-  { label: "m", code: "KeyM" },
+  { label: "Z", code: "KeyZ" },
+  { label: "X", code: "KeyX" },
+  { label: "C", code: "KeyC" },
+  { label: "V", code: "KeyV" },
+  { label: "B", code: "KeyB" },
+  { label: "N", code: "KeyN" },
+  { label: "M", code: "KeyM" },
   { label: ",", shifted: "<", code: "Comma" },
   { label: ".", shifted: ">", code: "Period" },
   { label: "/", shifted: "?", code: "Slash" },
@@ -91,11 +93,11 @@ const row4: KeyDef[] = [
 // Space row (Ctrl, Meta, Alt, Space, Alt, Meta, Menu, Ctrl)
 const row5: KeyDef[] = [
   { label: "ctrl", action: "ctrl", width: "md" },
-  { label: "meta", action: "meta", width: "md" },
+  // { label: "meta", action: "meta", width: "md" },
   { label: "alt", action: "alt", width: "md" },
   { label: "space", action: "space", width: "space" },
   { label: "alt", action: "alt", width: "md" },
-  { label: "meta", action: "meta", width: "md" },
+  // { label: "meta", action: "meta", width: "md" },
   { label: "ctrl", action: "ctrl", width: "md" },
 ];
 
@@ -110,7 +112,7 @@ function widthClass(w?: KeyDef["width"]) {
     case "2xl":
       return "w-36";
     case "space":
-      return "w-72"; // wide spacebar
+      return "w-96"; // wide spacebar
     default:
       return "w-10";
   }
@@ -126,7 +128,7 @@ function Key({
   return (
     <Button
       aria-label={k.shifted ? `${k.shifted} ${k.label}` : k.label}
-      className={`key ${widthClass(k.width)} h-10 rounded border flex items-center justify-center`}
+      className={`key ${widthClass(k.width)} h-10 rounded border flex items-center justify-center text-muted-foreground`}
       role="gridcell"
       type="button"
       variant={"outline"}
@@ -150,12 +152,20 @@ export default function Page() {
   const rows = [row1, row2, row3, row4, row5];
 
   return (
-    <div className="flex justify-center py-6">
+    <div className="fixed bottom-25 w-full flex justify-center">
       <div
         aria-label="Keyboard"
-        className="flex flex-col gap-2 bg-card p-4 border rounded-lg shadow-lg scale-110"
+        className="relative flex flex-col gap-2 bg-card p-4 border rounded-lg shadow-lg scale-110"
         role="grid"
       >
+        {/* right hand */}
+        <Image
+          alt="Resting hand on keyboard"
+          className="pointer-events-none absolute -bottom-68 left-[69%] -translate-x-1/2"
+          height={600}
+          src="/right-top-row-1.png"
+          width={568}
+        />
         {rows.map((row, rIdx) => (
           <div key={rIdx} className="flex gap-1 " role="row">
             {row.map((k, i) => (
