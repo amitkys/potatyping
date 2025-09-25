@@ -4,5 +4,8 @@
   "editor.insertSpaces": true,
 
   // Set number of spaces per indentation level
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindings": [],
+  "vim.visualModeKeyBindings": []
 }

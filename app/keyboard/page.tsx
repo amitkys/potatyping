@@ -128,7 +128,7 @@ function Key({
   return (
     <Button
       aria-label={k.shifted ? `${k.shifted} ${k.label}` : k.label}
-      className={`key ${widthClass(k.width)} h-10 rounded border flex items-center justify-center text-muted-foreground`}
+      className={`key ${widthClass(k.width)} h-10 rounded border flex items-center justify-center `}
       role="gridcell"
       type="button"
       variant={"outline"}
@@ -158,12 +158,20 @@ export default function Page() {
         className="relative flex flex-col gap-2 bg-card p-4 border rounded-lg shadow-lg scale-110"
         role="grid"
       >
+        {/* left hand */}
+        <Image
+          alt="Resting hand on keyboard"
+          className="pointer-events-none absolute -bottom-68 left-[17%] -translate-x-1/2"
+          height={600}
+          src="/left-bottom-row-2.png"
+          width={520}
+        />
         {/* right hand */}
         <Image
           alt="Resting hand on keyboard"
-          className="pointer-events-none absolute -bottom-68 left-[69%] -translate-x-1/2"
+          className="pointer-events-none absolute -bottom-66 left-[71%] -translate-x-1/2"
           height={600}
-          src="/right-top-row-1.png"
+          src="/right-top-row-5.png"
           width={568}
         />
         {rows.map((row, rIdx) => (
