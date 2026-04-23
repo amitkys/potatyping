@@ -9,17 +9,17 @@ type KeyDef = {
   shifted?: string;
   code?: string; // e.g., "Digit1", "KeyQ"
   action?:
-    | "delete"
-    | "backspace"
-    | "tab"
-    | "enter"
-    | "shift"
-    | "caps"
-    | "ctrl"
-    | "alt"
-    | "meta"
-    | "menu"
-    | "space";
+  | "delete"
+  | "backspace"
+  | "tab"
+  | "enter"
+  | "shift"
+  | "caps"
+  | "ctrl"
+  | "alt"
+  | "meta"
+  | "menu"
+  | "space";
   width?: "sm" | "md" | "lg" | "xl" | "2xl" | "space";
 };
 
@@ -159,21 +159,6 @@ export default function Page() {
         role="grid"
       >
         {/* left hand */}
-        <Image
-          alt="Resting hand on keyboard"
-          className="pointer-events-none absolute -bottom-68 left-[17%] -translate-x-1/2"
-          height={600}
-          src="/left-bottom-row-2.png"
-          width={520}
-        />
-        {/* right hand */}
-        <Image
-          alt="Resting hand on keyboard"
-          className="pointer-events-none absolute -bottom-66 left-[71%] -translate-x-1/2"
-          height={600}
-          src="/right-top-row-5.png"
-          width={568}
-        />
         {rows.map((row, rIdx) => (
           <div key={rIdx} className="flex gap-1 " role="row">
             {row.map((k, i) => (
